@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TodoService } from './todo.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo';
+  data: any;
+
+  constructor(private todos: TodoService) {
+    this.todos.getData().subscribe(data =>{
+      this.data = data;
+      console.log(data)
+    })
+  }
 }
